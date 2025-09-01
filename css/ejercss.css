@@ -1,0 +1,28 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #faf9f7;
+}
+h1 {
+    color: blue;
+}
+
+p#color_p {
+    color: blueviolet;
+}
+
+p.color_p {
+    color: darkblue;
+}
+
+.color_p{
+     color: black;
+}
+
+div#menu_nav > ul#opciones > li:hover {
+    background-color: #558b8b;
+    color: #070707;
+}
