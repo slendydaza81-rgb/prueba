@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <link rel="stylesheet" href="../css/formato2.css">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="form-container">
+        <h2>Formulario de Registro</h2>
+        <form id="miFormulario">
+            <label for="nombres">Nombres:</label>
+            <input type="text" id="nombres" name="nombres" placeholder="Ingresa tus nombres">
+            <div class="error" id="errorNombres"></div>
+
+            <label for="apellidos">Apellidos:</label>
+            <input type="text" id="apellidos" name="apellidos" placeholder="Ingresa tus apellidos">
+            <div class="error" id="errorApellidos"></div>
+
+            <label for="tipoId">Tipo de Identificación:</label>
+            <select id="tipoId" name="tipoId" required>
+                <option value="">--Seleccione--</option>
+                <option value="CC">Cédula de Ciudadanía</option>
+                <option value="TI">Tarjeta de Identidad</option>
+                <option value="CE">Cédula de Extranjería</option>
+                <option value="Pasaporte">Pasaporte</option>
+            </select>
+
+            <label for="numeroId">Número de Identificación:</label>
+            <input type="text" id="numeroId" name="numeroId" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="confirmEmail">Confirmar Email:</label>
+            <input type="email" id="confirmEmail" name="confirmEmail" required>
+
+            <label for="fechaNacimiento">Fecha de nacimiento:</label>
+            <input type="date" id="fechaNacimiento" name="fechaNacimiento">
+            <div class="error" id="errorFecha"></div>
+
+            <label>Sexo:</label>
+            <div class="sexo-opciones">
+                <label><input type="radio" name="sexo" value="Mujer"> Mujer</label>
+                <label><input type="radio" name="sexo" value="Hombre"> Hombre</label>
+            </div>
+            <div class="error" id="errorSexo"></div>
+
+            <label for="password">Contraseña:</label>
+            <input type="password" id="password" name="password" placeholder="Ingresa tu contraseña">
+            <div class="error" id="errorPassword"></div>
+
+            <label for="confirmPassword">Repetir contraseña:</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Repite tu contraseña">
+            <div class="error" id="errorConfirmPassword"></div>
+
+            <button type="submit">Enviar</button>
+            <button type="button" class="Limpiar" id="btnLimpiar">Limpiar</button>
+            <div class="success" id="mensajeExito"></div>
+        </form>
+        <a href="../index.html">Volver Atras</a>
+
+        <div id="resultado"></div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../js/formato2.js"></script>
+
+</body>
+
+</html>
