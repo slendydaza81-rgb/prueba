@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <title>To-Do List</title>
+  <style>
+    /* ======== ESTILOS GENERALES ======== */
+    body {
+      font-family: Arial, sans-serif;
+      background: #f3f4f6;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      background: white;
+      padding: 20px 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      width: 320px;
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    /* ======== INPUT + BOTÓN ======== */
+    input[type="text"] {
+      width: 70%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      outline: none;
+    }
+
+    button {
+      padding: 8px 12px;
+      background: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-left: 5px;
+      transition: background 0.2s;
+      margin-top: 15px;
+    }
+
+    button:hover {
+      background: #45a049;
+    }
+
+    /* ======== LISTA DE TAREAS ======== */
+    ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 20px;
+    }
+
+    li {
+      background: #f9f9f9;
+      margin-bottom: 8px;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+
+      display: flex;
+      justify-content: space-between;
+      /* Texto a la izquierda y botón a la derecha */
+      align-items: center;
+    }
+
+    /* Botón de eliminar, el comentado para la X*/
+    /* .btn-eliminar {
+      background: #ff4d4d;
+      border: none;
+      color: white;
+      font-weight: bold;
+      padding: 5px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.2s;
+    } */
+    .btn-eliminar {
+      background: none;
+      border: none;
+      color: red;
+      cursor: pointer;
+      font-size: 18px;
+      margin-left: 10px;
+    }
+
+    .btn-eliminar:hover {
+      background: #e60000;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h2>Lista de Tareas</h2>
+
+    <input type="text" id="tareaInput" placeholder="Escribe una tarea">
+    <button id="agregarBtn">Agregar</button>
+
+    <ul id="listaTareas"></ul>
+  </div>
+
+  <script>
+    const tareaInput = document.getElementById("tareaInput");
+    const agregarBtn = document.getElementById("agregarBtn");
+    const listaTareas = document.getElementById("listaTareas");
+
+    // Cuando la página cargue, enfocar el input automáticamente
+    window.onload = function () {
+      tareaInput.focus();
+    };
+
+
+    // Función para agregar tarea
+    function agregarTarea() {
+      const textoTarea = tareaInput.value.trim();
+
+      if (textoTarea === "") {
+        alert("Por favor, escribe una tarea");
+        return;
+      }
+
+      // Crear <li> y contenido
+      const li = document.createElement("li");
+      li.textContent = textoTarea;
+
+      // Botón eliminar tiene el css comentado
+      // const btnEliminar = document.createElement("button");
+      // btnEliminar.textContent = "❌";
+      // btnEliminar.classList.add("btn-eliminar");
+      const btnEliminar = document.createElement("button");
+      btnEliminar.innerHTML = '<i class="fa-solid fa-trash"></i>'; // Ícono de basura
+      btnEliminar.classList.add("btn-eliminar");
+
+      // Eliminar tarea al hacer clic
+      btnEliminar.addEventListener("click", function () {
+        listaTareas.removeChild(li);
+      });
+
+      // Agregar botón al <li>
+      li.appendChild(btnEliminar);
+
+      // Agregar <li> a la lista
+      listaTareas.appendChild(li);
+
+      // Limpiar y enfocar el input
+      tareaInput.value = "";
+      tareaInput.focus();
+    }
+
+    // Evento para el botón
+    agregarBtn.addEventListener("click", agregarTarea);
+
+    // Evento para Enter
+    tareaInput.addEventListener("keypress", function (event) {
+      if (event.key === "Enter") {
+        agregarTarea();
+      }
+    });
+  </script>
+</body>
+
+</html>
